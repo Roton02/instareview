@@ -586,7 +586,7 @@ nav.sticky-active .nav-container {
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 99;
+  /* z-index: 99; */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;

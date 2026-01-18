@@ -150,34 +150,36 @@ function setupScrollAnimations() {
 }
 
 // ============================================
-// SMOOTH SCROLL & ANCHOR LINKS
+// SMOOTH SCROLL & ANCHOR LINKS - FIXED VERSION
 // ============================================
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (e) => {
     const href = link.getAttribute("href");
     if (href !== "#" && href !== "") {
       e.preventDefault();
-      const target = document.querySelector(href);
+      const targetId = href.substring(1);
+      const target = document.getElementById(targetId);
+
       if (target) {
-        // Close mobile menu first if it's open
+        // Function to perform the scroll
+        const performScroll = () => {
+          const yOffset = -80; // Offset for fixed navbar
+          const y =
+            target.getBoundingClientRect().top + window.scrollY + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        };
+
+        // Check if mobile menu is open
         const isMobileMenuOpen = mobileMenu.classList.contains("open");
+
         if (isMobileMenuOpen) {
+          // Close mobile menu first
           closeMobileMenu();
-          // Longer delay to ensure menu fully closes before scrolling on mobile
-          setTimeout(() => {
-            const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-            window.scrollTo({
-              top: offsetTop,
-              behavior: "smooth",
-            });
-          }, 350);
+          // Wait for menu animation to complete (300ms CSS transition + small buffer)
+          setTimeout(performScroll, 320);
         } else {
-          // Desktop - immediate scroll
-          const offsetTop = target.offsetTop - 80;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: "smooth",
-          });
+          // Desktop - scroll immediately
+          performScroll();
         }
       }
     }
