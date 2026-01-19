@@ -251,6 +251,70 @@ scrollToTopBtn.addEventListener("click", () => {
 // INITIALIZE ON LOAD
 // ============================================
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize EmailJS first
+  if (typeof emailjs !== "undefined") {
+    //public key: CJmUm5V-CcStcucLT
+    emailjs.init("CJmUm5V-CcStcucLT");
+  }
+
+  // Setup feedback form
+  const feedbackForm = document.getElementById("feedbackForm");
+  if (feedbackForm) {
+    feedbackForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const submitBtn = e.target.querySelector(".submit-join-btn");
+      const originalText = submitBtn.textContent;
+
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+
+      // Get form data matching EmailJS template
+      const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        businessName: document.getElementById("businessName").value,
+        message: document.getElementById("message").value,
+      };
+
+      console.log("Sending form data:", formData);
+
+      // Send email using EmailJS
+      if (typeof emailjs !== "undefined") {
+        emailjs.send("service_aj8jtuj", "template_y8locop", formData).then(
+          function (response) {
+            console.log("SUCCESS!", response.status, response.text);
+
+            // Hide form and show success message
+            document.getElementById("feedbackForm").style.display = "none";
+            document.getElementById("feedbackSuccess").style.display = "block";
+
+            // Scroll to success message
+            document.getElementById("feedbackSuccess").scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          },
+          function (error) {
+            console.error("FAILED...", error);
+            alert("Failed to send your information. Please try again later.");
+
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          },
+        );
+      } else {
+        console.error("EmailJS not loaded");
+        alert("Email service not available. Please try again later.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  }
+
   setupScrollAnimations();
   animateCounters();
   updateTimeline();
