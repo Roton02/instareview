@@ -151,7 +151,7 @@ body {
 }
 
 .step-image-container {
-  /* background: #f0f9ff; */
+  background: #f0f9ff;
   border-radius: 24px;
   padding: 40px 50px;
   display: flex;
