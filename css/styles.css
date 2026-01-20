@@ -153,7 +153,7 @@ body {
 .step-image-container {
   /* background: #f0f9ff; */
   border-radius: 24px;
-  padding: 60px 0;
+  padding: 40px 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,14 +165,14 @@ body {
 }
 
 .step-image-container.with-padding {
-  padding: 30px 48px;
+  padding: 10px 0px;
 }
 
 .step-image {
   width: 100%;
   height: auto;
   object-fit: contain;
-  max-height: 520px;
+  max-height: 620px;
 }
 
 /* Step Indicator (Number Badge on Timeline) */
