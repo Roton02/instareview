@@ -187,42 +187,88 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 });
 
 // ============================================
-// TIMELINE ANIMATION
+// TIMELINE ANIMATION & CONTROLS
 // ============================================
+let activeStepIndex = 0;
+let lastScrollPosition = window.scrollY;
+let directionIndicatorTimeout;
+
+function setScrollDirectionIndicator(direction) {
+  const guide = document.getElementById("timelineGuide");
+  if (!guide) return;
+
+  if (directionIndicatorTimeout) {
+    window.clearTimeout(directionIndicatorTimeout);
+  }
+
+  guide.classList.remove("guide-up", "guide-down");
+
+  if (direction === "down") {
+    guide.classList.add("guide-down");
+  } else if (direction === "up") {
+    guide.classList.add("guide-up");
+  }
+
+  directionIndicatorTimeout = window.setTimeout(() => {
+    guide.classList.remove("guide-up", "guide-down");
+  }, 600);
+}
+
 function updateTimeline() {
   const stepsWrapper = document.querySelector(".steps-wrapper");
   if (!stepsWrapper) return;
 
   const timelineProgress = document.getElementById("timelineProgress");
-  const stepIndicators = document.querySelectorAll(".step-number-indicator");
-  const steps = document.querySelectorAll(".step-item");
+  const timelineGuide = document.getElementById("timelineGuide");
+  const steps = document.querySelectorAll(".step-card");
 
-  const containerTop = stepsWrapper.offsetTop;
+  const wrapperRect = stepsWrapper.getBoundingClientRect();
+  const containerTop = window.scrollY + wrapperRect.top;
   const containerHeight = stepsWrapper.offsetHeight;
-  const scrollPosition = window.scrollY + window.innerHeight / 2;
+  const viewportMiddle = window.scrollY + window.innerHeight / 2;
 
-  // Calculate progress percentage
-  const progress = Math.max(
-    0,
-    Math.min(100, ((scrollPosition - containerTop) / containerHeight) * 100),
-  );
+  const progressRaw = ((viewportMiddle - containerTop) / containerHeight) * 100;
+  const progress = Math.max(0, Math.min(100, progressRaw));
 
   if (timelineProgress) {
     timelineProgress.style.height = progress + "%";
   }
 
-  // Activate step indicators based on scroll position
-  steps.forEach((step, index) => {
-    const stepTop = step.offsetTop + containerTop;
-    const stepMiddle = stepTop + step.offsetHeight / 2;
-    const indicator = stepIndicators[index];
+  if (timelineGuide) {
+    const guidePosition = Math.max(6, Math.min(94, progress));
+    timelineGuide.style.top = guidePosition + "%";
+  }
 
-    if (scrollPosition >= stepMiddle) {
-      indicator?.classList.add("active");
-    } else {
-      indicator?.classList.remove("active");
+  let closestDistance = Infinity;
+  let resolvedActiveIndex = 0;
+
+  steps.forEach((step, index) => {
+    const rect = step.getBoundingClientRect();
+    const stepMiddle = window.scrollY + rect.top + rect.height / 2;
+    const distance = Math.abs(viewportMiddle - stepMiddle);
+
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      resolvedActiveIndex = index;
     }
   });
+
+  steps.forEach((step, index) => {
+    step.classList.toggle("active", index === resolvedActiveIndex);
+  });
+
+  activeStepIndex = resolvedActiveIndex;
+
+  const scrollingDown = window.scrollY > lastScrollPosition + 4;
+  const scrollingUp = window.scrollY < lastScrollPosition - 4;
+
+  if (scrollingDown) {
+    setScrollDirectionIndicator("down");
+  } else if (scrollingUp) {
+    setScrollDirectionIndicator("up");
+  }
+
+  lastScrollPosition = window.scrollY;
 }
 
 // ============================================
@@ -331,3 +377,7 @@ window.addEventListener(
   },
   { once: false },
 );
+
+window.addEventListener("resize", () => {
+  updateTimeline();
+});
