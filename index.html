@@ -9,6 +9,12 @@
     />
     <meta name="theme-color" content="#1e40af" />
     <title>InstaReviewUs - Turn Feedback into 5-Star Reviews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" type="image/x-icon" href="/public/InstaReviewUs-favIcon.png" />
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/styles.css" />
@@ -445,8 +451,13 @@
             <div class="timeline-progress" id="timelineProgress"></div>
           </div>
 
-          <div class="timeline-guide" id="timelineGuide">
-            <img src="./public/timeline-guide.svg" alt="Scroll guide icon" />
+          <div class="timeline-guide" id="timelineGuide" aria-hidden="true">
+            <div class="guide-rocket">
+              <span class="rocket-body">
+                <span class="rocket-window"></span>
+              </span>
+              <span class="rocket-fire"></span>
+            </div>
           </div>
 
           <div class="timeline-grid">
