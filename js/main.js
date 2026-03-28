@@ -45,9 +45,66 @@ window.addEventListener("scroll", () => {
   }
 });
 
+// Hero depth parallax (lightweight)
+const heroSection = document.getElementById("hero");
+if (heroSection) {
+  heroSection.addEventListener("mousemove", (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    heroSection.style.setProperty("--hero-mx", `${x * 18}px`);
+    heroSection.style.setProperty("--hero-my", `${y * 14}px`);
+  });
+
+  heroSection.addEventListener("mouseleave", () => {
+    heroSection.style.setProperty("--hero-mx", "0px");
+    heroSection.style.setProperty("--hero-my", "0px");
+  });
+}
+
 // ============================================
 // VIDEO MODAL
 // ============================================
+function playHeroVideo(scrollToPlayer = false) {
+  const mediaWindow = document.querySelector(".hero-media-window");
+  const heroVideo = document.getElementById("heroInlineVideo");
+
+  if (!mediaWindow || !heroVideo) return;
+
+  mediaWindow.classList.add("is-playing");
+
+  if (scrollToPlayer) {
+    mediaWindow.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  heroVideo.currentTime = 0;
+  heroVideo.play().catch(() => {
+    // Playback may require user gesture in some browsers.
+  });
+}
+
+function resetHeroVideo(rewind = true) {
+  const mediaWindow = document.querySelector(".hero-media-window");
+  const heroVideo = document.getElementById("heroInlineVideo");
+
+  if (!mediaWindow || !heroVideo) return;
+
+  mediaWindow.classList.remove("is-playing");
+  heroVideo.pause();
+
+  if (rewind) {
+    heroVideo.currentTime = 0;
+  }
+}
+
+const heroInlineVideo = document.getElementById("heroInlineVideo");
+if (heroInlineVideo) {
+  heroInlineVideo.addEventListener("ended", () => {
+    resetHeroVideo();
+  });
+}
+
 function openVideoModal() {
   document.getElementById("videoModal").classList.add("open");
   document.body.style.overflow = "hidden";
@@ -56,6 +113,11 @@ function openVideoModal() {
 function closeVideoModal() {
   document.getElementById("videoModal").classList.remove("open");
   document.body.style.overflow = "auto";
+  const marketingVideo = document.getElementById("marketingVideo");
+  if (marketingVideo) {
+    marketingVideo.pause();
+    marketingVideo.currentTime = 0;
+  }
 }
 
 document.getElementById("videoModal").addEventListener("click", (e) => {
@@ -150,7 +212,11 @@ function setupScrollAnimations() {
 }
 
 // ============================================
-// SMOOTH SCROLL & ANCHOR LINKS - FIXED VERSION
+// TESTIMONIALS MARQUEE/AUTO-SCROLL
+// ============================================
+// Pure CSS animation with pause on hover
+// No JavaScript required - handled via CSS animations
+
 // ============================================
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (e) => {
@@ -189,63 +255,104 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 // ============================================
 // TIMELINE ANIMATION & CONTROLS
 // ============================================
-let activeStepIndex = 0;
+let activeStepIndex = -1;
 let lastScrollPosition = window.scrollY;
-let directionIndicatorTimeout;
+let timelineIndicatorCurrentY = null;
+let timelineIndicatorTargetY = 40;
+let timelineIndicatorRaf = null;
 
-function setScrollDirectionIndicator(direction) {
-  const guide = document.getElementById("timelineGuide");
-  if (!guide) return;
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
 
-  if (directionIndicatorTimeout) {
-    window.clearTimeout(directionIndicatorTimeout);
+function animateTimelineIndicator(timeline) {
+  if (!timeline) {
+    timelineIndicatorRaf = null;
+    return;
   }
 
-  guide.classList.remove("guide-up", "guide-down");
-
-  if (direction === "down") {
-    guide.classList.add("guide-down");
-  } else if (direction === "up") {
-    guide.classList.add("guide-up");
+  if (timelineIndicatorCurrentY === null) {
+    timelineIndicatorCurrentY = timelineIndicatorTargetY;
   }
 
-  directionIndicatorTimeout = window.setTimeout(() => {
-    guide.classList.remove("guide-up", "guide-down");
-  }, 600);
+  const delta = timelineIndicatorTargetY - timelineIndicatorCurrentY;
+  timelineIndicatorCurrentY += delta * 0.14;
+
+  if (Math.abs(delta) < 0.2) {
+    timelineIndicatorCurrentY = timelineIndicatorTargetY;
+  }
+
+  timeline.style.setProperty(
+    "--timeline-indicator-y",
+    `${timelineIndicatorCurrentY}px`,
+  );
+
+  if (Math.abs(timelineIndicatorTargetY - timelineIndicatorCurrentY) > 0.2) {
+    timelineIndicatorRaf = requestAnimationFrame(() =>
+      animateTimelineIndicator(timeline),
+    );
+  } else {
+    timelineIndicatorRaf = null;
+  }
+}
+
+function setTimelineIndicatorTarget(timeline, targetY) {
+  timelineIndicatorTargetY = targetY;
+
+  if (timelineIndicatorRaf === null) {
+    timelineIndicatorRaf = requestAnimationFrame(() =>
+      animateTimelineIndicator(timeline),
+    );
+  }
 }
 
 function updateTimeline() {
-  const stepsWrapper = document.querySelector(".steps-wrapper");
-  if (!stepsWrapper) return;
+  const timeline = document.querySelector("#how-it-works .steps-timeline");
+  if (!timeline) return;
 
-  const timelineProgress = document.getElementById("timelineProgress");
-  const timelineGuide = document.getElementById("timelineGuide");
-  const steps = document.querySelectorAll(".step-card");
+  const stepItems = Array.from(timeline.querySelectorAll(".step-item"));
+  const stepBadges = Array.from(timeline.querySelectorAll(".step-badge"));
+  const timelineDots = Array.from(timeline.querySelectorAll(".timeline-dot"));
+  const indicator = timeline.querySelector(".timeline-scroll-indicator");
 
-  const wrapperRect = stepsWrapper.getBoundingClientRect();
-  const containerTop = window.scrollY + wrapperRect.top;
-  const containerHeight = stepsWrapper.offsetHeight;
-  const viewportMiddle = window.scrollY + window.innerHeight / 2;
+  if (!stepItems.length || !stepBadges.length || !indicator) return;
 
-  const progressRaw = ((viewportMiddle - containerTop) / containerHeight) * 100;
-  const progress = Math.max(0, Math.min(100, progressRaw));
+  const timelineRect = timeline.getBoundingClientRect();
+  const timelineVisible =
+    timelineRect.bottom > 0 && timelineRect.top < window.innerHeight;
+  indicator.classList.toggle("is-visible", timelineVisible);
 
-  if (timelineProgress) {
-    timelineProgress.style.height = progress + "%";
+  const scrollingDown = window.scrollY > lastScrollPosition + 2;
+  const scrollingUp = window.scrollY < lastScrollPosition - 2;
+  const direction = scrollingDown ? "down" : scrollingUp ? "up" : null;
+
+  if (direction) {
+    indicator.dataset.direction = direction;
   }
 
-  if (timelineGuide) {
-    const guidePosition = Math.max(6, Math.min(94, progress));
-    timelineGuide.style.top = guidePosition + "%";
+  if (!timelineVisible) {
+    lastScrollPosition = window.scrollY;
+    return;
   }
+
+  const viewportAnchor = window.innerHeight * 0.47;
+  const badgeCenters = stepBadges.map((badge) => {
+    const badgeRect = badge.getBoundingClientRect();
+    return badgeRect.top - timelineRect.top + badgeRect.height / 2;
+  });
+
+  const firstCenter = badgeCenters[0];
+  const lastCenter = badgeCenters[badgeCenters.length - 1];
+  const anchorInTimeline = viewportAnchor - timelineRect.top;
+  const smoothCenterY = clamp(anchorInTimeline, firstCenter, lastCenter);
+  const indicatorHalf = 16;
+  setTimelineIndicatorTarget(timeline, smoothCenterY - indicatorHalf);
 
   let closestDistance = Infinity;
   let resolvedActiveIndex = 0;
 
-  steps.forEach((step, index) => {
-    const rect = step.getBoundingClientRect();
-    const stepMiddle = window.scrollY + rect.top + rect.height / 2;
-    const distance = Math.abs(viewportMiddle - stepMiddle);
+  badgeCenters.forEach((centerY, index) => {
+    const distance = Math.abs(smoothCenterY - centerY);
 
     if (distance < closestDistance) {
       closestDistance = distance;
@@ -253,20 +360,19 @@ function updateTimeline() {
     }
   });
 
-  steps.forEach((step, index) => {
-    step.classList.toggle("active", index === resolvedActiveIndex);
-  });
-
   activeStepIndex = resolvedActiveIndex;
 
-  const scrollingDown = window.scrollY > lastScrollPosition + 4;
-  const scrollingUp = window.scrollY < lastScrollPosition - 4;
+  stepItems.forEach((step, index) => {
+    step.classList.toggle("is-current", index === activeStepIndex);
+  });
 
-  if (scrollingDown) {
-    setScrollDirectionIndicator("down");
-  } else if (scrollingUp) {
-    setScrollDirectionIndicator("up");
-  }
+  stepBadges.forEach((badge, index) => {
+    badge.classList.toggle("is-current", index === activeStepIndex);
+  });
+
+  timelineDots.forEach((dot, index) => {
+    dot.classList.toggle("is-current", index === activeStepIndex);
+  });
 
   lastScrollPosition = window.scrollY;
 }
@@ -371,11 +477,10 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener(
   "scroll",
   () => {
-    setupScrollAnimations();
     updateTimeline();
     toggleScrollToTopBtn();
   },
-  { once: false },
+  { passive: true },
 );
 
 window.addEventListener("resize", () => {
