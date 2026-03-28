@@ -222,7 +222,7 @@
 
           <div class="hero-cta-group hero-cta-group--center">
             <a href="#join-us" class="w-full">
-              <button class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg md:text-xl font-bold py-4 px-8 rounded-xl hover:shadow-2xl transform hover:scale-105 transition duration-300 flex items-center justify-center gap-2 shadow-lg">
+              <button class="hero-cta-primary w-full text-white text-lg md:text-xl font-bold py-4 px-8 rounded-xl transform hover:scale-105 transition duration-300 flex items-center justify-center gap-2 shadow-lg">
                 👉 Start Getting More Google Reviews
               </button>
             </a>
@@ -692,7 +692,7 @@
 
         <div class="grid md:grid-cols-2 gap-12">
           <!-- Feature 1 -->
-          <div class="feature-card fade-in-up p-8 border border-gray-200 rounded-lg" style="animation-delay: 0s">
+          <div class="feature-card fade-in-up" data-delay="0">
             <div class="mb-4 text-4xl">🏷️</div>
             <h3 class="text-2xl font-bold mb-4">1,000 Smart Review Stickers</h3>
             <ul class="space-y-2 text-gray-700">
@@ -703,7 +703,7 @@
           </div>
 
           <!-- Feature 2 -->
-          <div class="feature-card fade-in-up p-8 border border-gray-200 rounded-lg" style="animation-delay: 0.1s">
+          <div class="feature-card fade-in-up" data-delay="1">
             <div class="mb-4 text-4xl">⭐</div>
             <h3 class="text-2xl font-bold mb-4">Smart Review Filtering System</h3>
             <ul class="space-y-2 text-gray-700">
@@ -714,7 +714,7 @@
           </div>
 
           <!-- Feature 3 -->
-          <div class="feature-card fade-in-up p-8 border border-gray-200 rounded-lg" style="animation-delay: 0.2s">
+          <div class="feature-card fade-in-up" data-delay="2">
             <div class="mb-4 text-4xl">🎁</div>
             <h3 class="text-2xl font-bold mb-4">Customer Incentives</h3>
             <ul class="space-y-2 text-gray-700">
@@ -727,7 +727,7 @@
           </div>
 
           <!-- Feature 4 -->
-          <div class="feature-card fade-in-up p-8 border border-gray-200 rounded-lg" style="animation-delay: 0.3s">
+          <div class="feature-card fade-in-up" data-delay="3">
             <div class="mb-4 text-4xl">📊</div>
             <h3 class="text-2xl font-bold mb-4">Analytics Dashboard</h3>
             <ul class="space-y-2 text-gray-700">
@@ -811,39 +811,50 @@
           <h2>What Our Customers Say</h2>
           <p>Real results from local restaurants, cafes, and retail shops using InstaReviewUs.</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="testimonial-card fade-in-up" style="animation-delay: 0s">
-            <p class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</p>
-            <p class="text-gray-700 leading-relaxed mb-6">
-              "We doubled our 5-star reviews in under a month. The private
-              feedback saved us from multiple bad ratings."
-            </p>
-            <p class="font-bold text-gray-900">Samantha</p>
-            <p class="text-gray-600 text-sm">Susu's Dream Cakes</p>
+
+        <!-- Carousel wrapper -->
+        <div class="testimonial-carousel">
+          <div class="testimonial-track show-three">
+            <div class="testimonial-slide">
+              <div class="testimonial-card fade-in-up" data-delay="0">
+                <p class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</p>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  "We doubled our 5-star reviews in under a month. The private
+                  feedback saved us from multiple bad ratings."
+                </p>
+                <p class="font-bold text-gray-900">Samantha</p>
+                <p class="text-gray-600 text-sm">Susu's Dream Cakes</p>
+              </div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-card fade-in-up" data-delay="1">
+                <p class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</p>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  "Customers love how simple it is, they scan, leave feedback, and
+                  we get more reviews every week."
+                </p>
+                <p class="font-bold text-gray-900">Ahmed</p>
+                <p class="text-gray-600 text-sm">Olives and Figs</p>
+              </div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-card fade-in-up" data-delay="2">
+                <p class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</p>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  "Set up was quick, the dashboard is easy to use, and our online
+                  reputation has never been better."
+                </p>
+                <p class="font-bold text-gray-900">David</p>
+                <p class="text-gray-600 text-sm">NYC Bagels and Coffee</p>
+              </div>
+            </div>
           </div>
-          <div
-            class="testimonial-card fade-in-up"
-            style="animation-delay: 0.1s"
-          >
-            <p class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</p>
-            <p class="text-gray-700 leading-relaxed mb-6">
-              "Customers love how simple it is, they scan, leave feedback, and
-              we get more reviews every week."
-            </p>
-            <p class="font-bold text-gray-900">Ahmed</p>
-            <p class="text-gray-600 text-sm">Olives and Figs</p>
-          </div>
-          <div
-            class="testimonial-card fade-in-up"
-            style="animation-delay: 0.2s"
-          >
-            <p class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</p>
-            <p class="text-gray-700 leading-relaxed mb-6">
-              "Set up was quick, the dashboard is easy to use, and our online
-              reputation has never been better."
-            </p>
-            <p class="font-bold text-gray-900">David</p>
-            <p class="text-gray-600 text-sm">NYC Bagels and Coffee</p>
+
+          <!-- Carousel controls -->
+          <div class="carousel-controls">
+            <button class="carousel-btn carousel-btn-prev" aria-label="Previous testimonial">&#8592;</button>
+            <div class="carousel-dots"></div>
+            <button class="carousel-btn carousel-btn-next" aria-label="Next testimonial">&#8594;</button>
           </div>
         </div>
       </div>
@@ -859,7 +870,7 @@
 
         <div class="grid md:grid-cols-3 gap-8 mb-16">
           <!-- Starter Plan -->
-          <div class="pricing-card fade-in-up" style="animation-delay: 0s">
+          <div class="pricing-card fade-in-up" data-delay="0">
             <h3 class="pricing-plan-name">Starter</h3>
             <p class="pricing-plan-desc">For getting started</p>
 
@@ -914,7 +925,7 @@
           <!-- Pro Plan (Most Popular) -->
           <div
             class="pricing-card popular fade-in-up"
-            style="animation-delay: 0.1s"
+            data-delay="1"
           >
             <div class="popular-badge">
               ⭐ Pro is the most popular for restaurants like yours!
@@ -973,7 +984,7 @@
           </div>
 
           <!-- Ultimate Plan -->
-          <div class="pricing-card fade-in-up" style="animation-delay: 0.2s">
+          <div class="pricing-card fade-in-up" data-delay="2">
             <h3 class="pricing-plan-name">Ultimate</h3>
             <p class="pricing-plan-desc">For multi-location businesses</p>
 
@@ -1252,28 +1263,30 @@
         <h2 class="text-4xl md:text-5xl font-bold mb-6">
           Start Generating More Google Reviews Today
         </h2>
-        <p class="text-xl mb-4 text-blue-100">
+        <p class="text-xl mb-4 cta-text-muted">
           Your online reputation drives new customers.
         </p>
-        <p class="text-xl mb-8 text-blue-100">
+        <p class="text-xl mb-8 cta-text-muted">
           InstaReviewUs makes review growth automatic.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <a href="#join-us">
             <button
-              class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition hover:scale-105 transform duration-300 text-lg"
+              class="bg-white font-bold py-4 px-10 rounded-xl hover:bg-gray-50 transition hover:scale-105 transform duration-300 text-lg shadow-xl text-purple-700"
             >
               👉 Start Getting More Google Reviews
             </button>
           </a>
         </div>
-        <p class="text-lg text-blue-100 mb-6">
-          Launch Discount
-        </p>
-        <p class="text-3xl font-bold mb-4">
-          <span class="line-through text-blue-200">$179</span> $89 Today
-        </p>
-        <p class="text-blue-100">
+        <div class="cta-price-badge">
+          <p class="text-lg mb-2 cta-text-muted">
+            Launch Discount — Today Only
+          </p>
+          <p class="text-4xl font-bold text-white">
+            <span class="line-through text-white opacity-50 text-3xl">$179</span> $89
+          </p>
+        </div>
+        <p class="cta-text-muted">
           Full dashboard access and review filtering starts at $49/month — most businesses recover this with just 1–2 additional customers. Cancel anytime.
         </p>
       </div>

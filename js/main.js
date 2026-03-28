@@ -124,7 +124,7 @@ function animateCounters() {
 }
 
 // ============================================
-// SCROLL-TRIGGERED ANIMATIONS
+// SCROLL-TRIGGERED ANIMATIONS (Intersection Observer — created once)
 // ============================================
 function setupScrollAnimations() {
   const observerOptions = {
@@ -135,8 +135,15 @@ function setupScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting && !entry.target.dataset.animated) {
+        // Apply stagger delay from data-delay attribute if present
+        const delay = entry.target.dataset.delay;
+        if (delay !== undefined) {
+          entry.target.style.transitionDelay = (parseFloat(delay) * 0.12) + "s";
+        }
         entry.target.classList.add("visible");
         entry.target.dataset.animated = "true";
+        // Stop observing once animated
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
@@ -294,6 +301,92 @@ scrollToTopBtn.addEventListener("click", () => {
 });
 
 // ============================================
+// TESTIMONIAL CAROUSEL
+// ============================================
+function setupTestimonialCarousel() {
+  const carousel = document.querySelector(".testimonial-carousel");
+  if (!carousel) return;
+
+  const track = carousel.querySelector(".testimonial-track");
+  const slides = Array.from(carousel.querySelectorAll(".testimonial-slide"));
+  const prevBtn = carousel.querySelector(".carousel-btn-prev");
+  const nextBtn = carousel.querySelector(".carousel-btn-next");
+  const dotsContainer = carousel.querySelector(".carousel-dots");
+
+  if (!track || slides.length === 0) return;
+
+  let currentIndex = 0;
+  // Show 3 on desktop, 1 on mobile
+  const getPerPage = () => (window.innerWidth >= 768 ? 3 : 1);
+
+  // Build dots
+  function buildDots() {
+    if (!dotsContainer) return;
+    const perPage = getPerPage();
+    const totalPages = Math.ceil(slides.length / perPage);
+    dotsContainer.innerHTML = "";
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement("button");
+      dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+      dot.setAttribute("aria-label", `Go to page ${i + 1}`);
+      dot.addEventListener("click", () => goToPage(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goToPage(pageIndex) {
+    const perPage = getPerPage();
+    const totalPages = Math.ceil(slides.length / perPage);
+    currentIndex = Math.max(0, Math.min(pageIndex, totalPages - 1));
+
+    // Use offsetWidth; fall back to container width / perPage if slide has no width yet
+    const slideWidth = (slides[0] && slides[0].offsetWidth) ||
+      (track.offsetWidth / perPage);
+    track.style.transform = `translateX(-${currentIndex * perPage * slideWidth}px)`;
+
+    // Update dots
+    if (dotsContainer) {
+      dotsContainer.querySelectorAll(".carousel-dot").forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+    }
+  }
+
+  function next() {
+    const perPage = getPerPage();
+    const totalPages = Math.ceil(slides.length / perPage);
+    goToPage((currentIndex + 1) % totalPages);
+  }
+
+  function prev() {
+    const perPage = getPerPage();
+    const totalPages = Math.ceil(slides.length / perPage);
+    goToPage((currentIndex - 1 + totalPages) % totalPages);
+  }
+
+  if (prevBtn) prevBtn.addEventListener("click", prev);
+  if (nextBtn) nextBtn.addEventListener("click", next);
+
+  // Auto-advance every 5s
+  let autoPlay = setInterval(next, 5000);
+  carousel.addEventListener("mouseenter", () => clearInterval(autoPlay));
+  carousel.addEventListener("mouseleave", () => { autoPlay = setInterval(next, 5000); });
+
+  // Rebuild on resize
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      buildDots();
+      goToPage(0);
+    }, 200);
+  });
+
+  buildDots();
+  goToPage(0);
+}
+
+// ============================================
 // INITIALIZE ON LOAD
 // ============================================
 document.addEventListener("DOMContentLoaded", () => {
@@ -365,17 +458,17 @@ document.addEventListener("DOMContentLoaded", () => {
   animateCounters();
   updateTimeline();
   toggleScrollToTopBtn();
+  setupTestimonialCarousel();
 });
 
-// Reinitialize on scroll for lazy loading
+// Scroll event: only update timeline and scroll-to-top (not re-create observers)
 window.addEventListener(
   "scroll",
   () => {
-    setupScrollAnimations();
     updateTimeline();
     toggleScrollToTopBtn();
   },
-  { once: false },
+  { passive: true },
 );
 
 window.addEventListener("resize", () => {
