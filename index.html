@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Turn Happy Guests into 5-Star Reviews! InstaReviewUs helps local businesses get more Google reviews automatically."
+      content="If your competitors have more Google reviews than you, they're taking your customers. Here's how to fix it automatically"
     />
     <meta name="theme-color" content="#1e40af" />
     <title>InstaReviewUs - Turn Feedback into 5-Star Reviews</title>
-    <link rel="icon" type="image/x-icon" href="/public/InstaReviewUs-favIcon.png" />
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="./public/InstaReviewUs-favIcon.png" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
@@ -21,7 +27,7 @@
         <div
           class="flex justify-between items-center p-6 border-b border-gray-200"
         >
-          <span class="font-semibold text-lg">See How It Works</span>
+          <span class="font-semibold text-lg">Marketing Video</span>
           <button
             class="text-gray-400 hover:text-gray-600 text-2xl"
             onclick="closeVideoModal()"
@@ -30,14 +36,10 @@
           </button>
         </div>
         <div class="aspect-video bg-gray-900">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-          ></iframe>
+          <video id="marketingVideo" width="100%" height="100%" controls preload="metadata" playsinline>
+            <source src="./public/marketing_video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </div>
@@ -57,8 +59,8 @@
           ></div>
         </div>
       </div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 nav-container">
-        <div class="flex justify-between items-center h-16">
+      <div class="content-wrapper content-wrapper--wide nav-container">
+        <div class="flex justify-between items-center h-14">
           <!-- Logo -->
           <a href="#hero">
               <div class="logo-container">
@@ -99,10 +101,12 @@
             >login
           </button> 
 
-          <button
-              class="premium-btn text-white px-6 py-2 rounded-lg font-semibold text-sm"
-            >Register
-          </button>
+          <a href="#join-us">
+            <button
+                class="premium-btn text-white px-6 py-2 rounded-lg font-semibold text-sm"
+              >Register
+            </button>
+          </a>
           </div>
               
           </div>
@@ -153,433 +157,680 @@
                 <a href="#join-us" class="text-gray-600 hover:text-blue-600 transition font-medium"> Join Us
           </a>
 
-          <div class="grid space-y-2 pr-14">
+          <div class="grid space-y-2 w-full">
             <button
-              class="premium-btn text-white px-6 py-2 rounded-lg font-semibold text-sm"
+              class="premium-btn text-white px-6 py-2 rounded-lg font-semibold text-sm w-full"
             >login
           </button> 
 
-          <button
-              class="premium-btn text-white px-6 py-2 rounded-lg font-semibold text-sm"
-            >Register
-          </button>
+          <a href="#join-us" class="w-full">
+            <button
+                class="premium-btn text-white px-6 py-2 rounded-lg font-semibold text-sm w-full"
+              >Register
+            </button>
+          </a>
           </div>
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-      <!-- Background Pattern -->
-      <div class="absolute inset-0 -z-10">
-        <div
-          class="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"
-        >
-          <div
-            class="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"
-          ></div>
+    <section id="hero" class="hero-section  relative section-shell pt-40  pb-60">
+      <div class="content-wrapper content-wrapper--wide">
+        <div class="hero-landscape relative">
+          <div class="hero-animated-bg" aria-hidden="true">
+            <div class="hero-gradient-blob blob-1"></div>
+            <div class="hero-gradient-blob blob-2"></div>
+            <div class="hero-gradient-blob blob-3"></div>
+            <div class="hero-gradient-blob blob-4"></div>
+            <div class="hero-gradient-blob blob-5"></div>
+          </div>
+          <div class="hero-particles" aria-hidden="true">
+            <div class="hero-particle particle-1"></div>
+            <div class="hero-particle particle-2"></div>
+            <div class="hero-particle particle-3"></div>
+            <div class="hero-particle particle-4"></div>
+            <div class="hero-particle particle-5"></div>
+            <div class="hero-particle particle-6"></div>
+          </div>
+          <div class="hero-floating-reviews" aria-hidden="true">
+            <div class="mb-40">
+              <span class="review-badge badge-stars badge-left">★★★★★</span>
+            <span class="review-badge badge-google badge-right">G Google Reviews</span>
+            </div>
+            <span class="review-badge badge-score badge-middle-left">4.9/5</span>
+            <span class="review-badge badge-stars badge-middle-right">★★★★★</span>
+          </div>
+
+          <div class="hero-badge">2026 expansion offer • Done-for-you setup</div>
+          <h1 class="hero-headline">
+            If your competitors have more Google reviews than you, they’re taking your customers. Here’s how to fix it automatically
+          </h1>
+          <p class="hero-lead hero-lead-center">
+            Get 1,000 smart review stickers + our review filtering system that turns customer visits into 5-star Google reviews automatically — while capturing negative feedback privately.
+            <br /><strong>No tech setup required — we handle everything for you!</strong>
+          </p>
+          <p class="hero-support-copy pb-20">
+          </p>
+
+          
         </div>
       </div>
-      <div class="max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2  gap-12 items-center">
-          <!-- Left Content -->
-          <div class="fade-in-left order-2 md:order-1" style="animation-delay: 0s">
-            <div class="mb-6">
-              <span
-                class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold"
-                >Trusted by 5,000+ Businesses</span
-              >
-            </div>
-            <h1
-              class="text-5xl md:text-6xl font-bold leading-tight mb-6 text-gray-900"
-            >
-              Turn Happy Guests into
-              <span
-                class="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent"
-                >5-Star Reviews!</span
-              >
-            </h1>
-            <p class="text-xl text-gray-700 mb-6 leading-relaxed">
-              InstaReviewUs helps you get more Google reviews from happy
-              customers, while blocking out the negative ones. And yes,
-              everything we do complies with Google's guidelines 100%!
-            </p>
-            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-              We use scan-to-review stickers and tap-to-review stands that make
-              it effortless for guests to share feedback in seconds. Happy
-              customers are sent straight to your Google page, while unhappy
-              ones share feedback privately.
-            </p>
-            <div class="flex flex-col sm:flex-row  gap-4 mb-12">
-              <a href="#pricing" class="flex justify-center items-center">
-                <button
-                  class="premium-btn text-white md:px-8 px-20 py-3 rounded-lg font-semibold flex justify-center items-center"
-                >
-                  Check Out Plans
-                </button>
-              </a>
+
+      <div class="hero-media-anchor" aria-label="Marketing video preview">
+            <div class="hero-media-window" role="region" aria-label="InstaReviewUs marketing video">
               <button
-                onclick="openVideoModal()"
-                class="outline-btn text-blue-600 px-8 py-3 rounded-lg font-semibold"
+                type="button"
+                class="hero-video-thumb"
+                onclick="playHeroVideo()"
+                aria-label="Play marketing video"
               >
-                See How It Works
+                <img
+                  src="./public/banner.png"
+                  alt="InstaReviewUs marketing video preview"
+                  class="hero-thumb-image"
+                />
+                <span class="hero-play-icon" aria-hidden="true">
+                  <svg viewBox="0 0 28 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 5v14l12-7-12-7z" />
+                  </svg>
+                </span>
+                <span class="hero-play-label">Play Video</span>
+              </button>
+
+              <video
+                id="heroInlineVideo"
+                class="hero-inline-player"
+                controls
+                preload="metadata"
+                playsinline
+                poster="./public/banner.png"
+              >
+                <source src="./public/marketing_video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+
+              <button
+                type="button"
+                class="hero-video-close"
+                onclick="resetHeroVideo()"
+                aria-label="Close video"
+              >
+                ×
               </button>
             </div>
-            <div class="space-y-4">
-              <p class="flex items-center text-gray-700 font-semibold">
-                <span class="text-2xl mr-3">⭐⭐⭐⭐⭐</span>
-                Trusted by restaurants, cafés, salons & gyms
-              </p>
-              <div class="border-l-4 border-blue-600 pl-4">
-                <p class="italic text-gray-700 text-lg mb-2">
-                  {"Within weeks, we doubled our reviews and protected our
-                  rating from unfair 1-stars."}
-                </p>
-                <p class="font-semibold text-gray-900">
-                  — Mike, Ashburns Café Owner
-                </p>
-              </div>
+          </div>
+      
+    </section>
+
+
+    <!-- section testimonial -->
+    <section class="section-shell md:pb-24 pt-60  hero-showcase-section">
+      <div class="content-wrapper content-wrapper--wide">
+        <div class="showcase-panel">
+          <div class="showcase-trust-row showcase-fade-1">
+            <div class="avatar-stack">
+              <span class="avatar-circle">SK</span>
+              <span class="avatar-circle">DH</span>
+              <span class="avatar-circle">JL</span>
+              <span class="avatar-circle">MB</span>
+            </div>
+            <div>
+              <p class="showcase-trust-title">5,000+ independent restaurants already onboard</p>
+              <p class="showcase-trust-subtitle">"...we see new Google reviews almost every shift now." - Dave's Hot Chicken</p>
+            </div>
+            <div class="showcase-kpi-chip" aria-label="Average launch speed">
+              <strong>48hrs</strong>
+              <span>Average go-live</span>
             </div>
           </div>
 
-          <!-- Right Image -->
-          <div class="fade-in-right scale-in order-1 md:order-2" style="animation-delay: 0.2s">
-            <div class="image-card">
-              <img
-                src="/public/banner.png"
-                alt="Happy business owner with 5-star reviews"
-                loading="lazy"
-              />
-            </div>
+          <div class="showcase-highlight-row showcase-fade-2">
+            <article class="showcase-highlight-card">
+              <p class="showcase-highlight-label">Go live in 2 days</p>
+              <p class="showcase-highlight-copy">We install, configure, and train your staff in one onboarding call.</p>
+            </article>
+            <article class="showcase-highlight-card">
+              <p class="showcase-highlight-label">Auto-filter unhappy guests</p>
+              <p class="showcase-highlight-copy">Emoji routing diverts neutral + negative scans into a private inbox instantly.</p>
+            </article>
+            <article class="showcase-highlight-card">
+              <p class="showcase-highlight-label">Hands-free reminders</p>
+              <p class="showcase-highlight-copy">Follow-up texts + coupons keep customers leaving reviews for weeks.</p>
+            </article>
+          </div>
+
+          <div class="showcase-action-row showcase-fade-3 py-5">
+            <a href="#join-us" class="hero-primary-link showcase-primary-link">
+              <button class="hero-primary-cta">
+                👉 Start Getting More Google Reviews
+              </button>
+            </a>
+          </div>
+
+          <div class="showcase-benefits-grid showcase-fade-4" aria-label="Core benefits">
+            <p>✔ Increase your Google rating and revenue</p>
+            <p>✔ Protect against negative public reviews</p>
+            <p>✔ No contracts. Cancel anytime</p>
+            <p>✔ Setup handled for you</p>
+            <p>✔ Used by real local businesses</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="py-20 section-light">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Stats Grid -->
-        <div class="grid md:grid-cols-3 gap-8 mb-20">
-          <div class="text-center fade-in-up" style="animation-delay: 0s">
-            <div class="stat-number" data-target="5126">0</div>
-            <p class="text-lg text-gray-600 mt-2 font-semibold">
-              Local Businesses Trusted
-            </p>
-          </div>
-          <div class="text-center fade-in-up" style="animation-delay: 0.1s">
-            <div class="flex justify-between items-baseline mx-auto w-max">
-              <div class="stat-number" data-target="98">0</div>
-              <span class="text-2xl font-bold text-gray-600">%</span>
+    <section class="hero-insights-section section-shell mt-10 pt-20">
+      <div class="content-wrapper content-wrapper--wide">
+        <div class="hero-insights-grid">
+          <article class="insight-card insight-card--offer fade-in-up">
+            <p class="insight-pill">Launch offer</p>
+            <h3>Done-for-you setup + 1,000 smart stickers</h3>
+            <p class="insight-main"><span>$179</span> $89.99</p>
+            <p class="insight-sub">First 20 businesses this week get 50% off onboarding.</p>
+            <a href="#join-us" class="insight-link">Reserve my install slot</a>
+          </article>
+
+          <article class="insight-card insight-card--growth fade-in-up" style="animation-delay: 0.1s">
+            <p class="insight-pill">Performance</p>
+            <h3>Review growth after launch</h3>
+            <div class="insight-stats">
+              <div><strong>+312%</strong><span>Review growth</span></div>
+              <div><strong>4.7★</strong><span>Average rating</span></div>
+              <div><strong>14s</strong><span>Scan to review</span></div>
             </div>
-            <p class="text-lg text-gray-600 mt-2 font-semibold">
-              Customer Satisfaction
-            </p>
+            <p class="insight-sub">Most customers leave a review before they leave the counter.</p>
+          </article>
+
+          <article class="insight-card insight-card--capacity fade-in-up" style="animation-delay: 0.2s">
+            <p class="insight-pill">Capacity</p>
+            <h3>Onboarding availability this week</h3>
+            <div class="insight-meter">
+              <span style="width: 65%"></span>
+            </div>
+            <p class="insight-sub"><strong>13 claimed • 7 slots left</strong></p>
+            <ul class="insight-list">
+              <li>Next slot: Thu 9:00 AM CST</li>
+              <li>Backup slot: Fri 3:00 PM CST</li>
+              <li>Weekend express: Waitlist only</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="section-shell brand-strip border-y border-gray-100">
+      <div class="content-wrapper">
+        <div class="section-intro">
+          <p class="text-lg font-bold text-gray-900">⭐️⭐️⭐️⭐️⭐️ Trusted by 5,000+ local businesses</p>
+          <p class="text-gray-600">Used by local businesses and franchise locations of brands like:</p>
+        </div>
+        <div class="brand-logos mb-6" role="list" aria-label="Partner brands">
+          <article class="brand-logo-card" role="listitem">
+            <img src="./public/macdonadsnew.png" alt="McDonald's logo" class="brand-logo-image " loading="lazy">
+            <span>McDonald's</span>
+          </article>
+          <article class="brand-logo-card" role="listitem">
+            <img src="./public/smothiekinglogo.png" alt="Smoothie King logo" class="brand-logo-image" loading="lazy">
+            <span>Smoothie King</span>
+          </article>
+          <article class="brand-logo-card" role="listitem">
+            <img src="./public/Dave's_Hot_Chicken_logo.png" alt="Dave's Hot Chicken logo" class="brand-logo-image" loading="lazy">
+            <span>Dave's Hot Chicken</span>
+          </article>
+          <article class="brand-logo-card" role="listitem">
+            <img src="./public/Dairy_Queen_logo.svg.png" alt="Dairy Queen logo" class="brand-logo-image" loading="lazy">
+            <span>Dairy Queen</span>
+          </article>
+          <article class="brand-logo-card" role="listitem">
+            <img src="./public/Pizza_Hut_logo-original.jpg" alt="Pizza Hut logo" class="brand-logo-image" loading="lazy">
+            <span>Pizza Hut</span>
+          </article>
+        </div>
+        <p class="text-center text-gray-500 text-sm">"Used by independently owned franchise locations"</p>
+        <p class="text-center text-gray-900 font-semibold mt-6">👉 Most businesses start seeing new reviews within the first week.</p>
+      </div>
+    </section>
+
+    <!-- Review Growth Proof Section -->
+    <section class="section-shell section-light">
+      <div class="content-wrapper">
+        <div class="section-intro">
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900">See What Happens When Restaurants Start Asking For Reviews</h2>
+          <p>Before/after snapshots from restaurants that followed the exact playbook you're about to use.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Before -->
+          <div class="bg-white rounded-lg p-8 border border-red-200 shadow-lg">
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Before using InstaReviewUs</h3>
+              <p class="text-3xl font-bold text-red-600">⭐ 4.1 Rating</p>
+              <p class="text-xl font-bold text-gray-900 mt-2">83 Google Reviews</p>
+            </div>
+            <p class="text-gray-700 text-center font-semibold">Customers rarely leave reviews because they're never asked.</p>
+            <div class="mt-6 h-40 bg-gray-100 rounded flex items-center justify-center">
+              <p class="text-gray-500">[Before Image]</p>
+            </div>
           </div>
-          <div class="text-center fade-in-up" style="animation-delay: 0.2s">
-            <div class="stat-number" data-target="336580Hello. Whoops showers. Wow. Hey, Cortana. I. I. Open the lyrics of Akhtar Aur Inaugurate. Move tested out in movie about 10:00 PM. I. What? I. I. Boy. Oops. So. Don't give me the best, I don't know. But. I don't, I don't. I don't go. ">0</div>
-            <p class="text-lg text-gray-600 mt-2 font-semibold">
-              5-Star Reviews Generated
-            </p>
+
+          <!-- After -->
+          <div class="bg-white rounded-lg p-8 border border-green-200 shadow-lg">
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">After using InstaReviewUs</h3>
+              <p class="text-3xl font-bold text-green-600">⭐ 4.7 Rating</p>
+              <p class="text-xl font-bold text-gray-900 mt-2">214 Google Reviews</p>
+            </div>
+            <p class="text-gray-700 text-center font-semibold">Customers simply scan the sticker and leave reviews in seconds.</p>
+            <div class="mt-6 h-40 bg-gray-100 rounded flex items-center justify-center">
+              <p class="text-gray-500">[After Image]</p>
+            </div>
           </div>
         </div>
 
-        <!-- Social Proof Images -->
-        <div class="image-card fade-in-up" style="animation-delay: 0.3s">
-          <img
-            src="/public/happy-people.png"
-            alt="Happy customers and business owners"
-            loading="lazy"
-          />
+        <div class="text-center mt-12 bg-blue-50 p-8 rounded-lg">
+          <p class="text-xl font-bold text-gray-900">More reviews = more trust = more customers.</p>
         </div>
-
-        <!-- Description -->
-        <p
-          class="text-center text-gray-700 mt-16 text-lg leading-relaxed max-w-3xl mx-auto fade-in-up"
-          style="animation-delay: 0.4s"
-        >
-          Whether you run a café, restaurant, barbershop, or dental office,
-          InstaReviewUs helps you get more positive reviews, handle complaints
-          privately, and grow your reputation on autopilot.
-        </p>
       </div>
     </section>
 
     <!-- How It Works -->
-    <section id="how-it-works" class="how-it-works-section">
-      <div class="how-it-works-container">
-        <!-- Header -->
-        <div class="how-it-works-header">
-          <h1 class="how-it-works-title">How it works</h1>
-          <p class="how-it-works-subtitle">
-            It's Simple for You, and Even Easier for Your Customers
-          </p>
+    <section id="how-it-works" class="section-shell section-white">
+      <div class="content-wrapper">
+        <div class="section-intro">
+          <h2>How InstaReviewUs Turns Customers Into Reviews</h2>
+          <p>Simple for your team, effortless for your customers</p>
         </div>
 
-        <!-- Steps Wrapper with Timeline -->
-        <div class="steps-wrapper">
-          <!-- Timeline Line -->
-          <div class="timeline-line">
-            <div class="timeline-progress" id="timelineProgress"></div>
+        <div class="steps-timeline">
+          <!-- Center line -->
+          <div class="timeline-line"></div>
+          <div class="timeline-scroll-indicator" aria-hidden="true" data-direction="down">
+            <span class="timeline-indicator-arrow">↓</span>
           </div>
 
-          <!-- Step 1 -->
-          <div class="step-item fade-in-up" data-step="1">
-            <div class="step-content-wrapper">
-              <span class="step-badge">Step 1</span>
-              <h2 class="step-heading step-heading-large">
-                Place the Stickers and Table/Counter Stand
-              </h2>
-              <p class="step-description">
-                On to-go orders, on receipts, each table, or at the front counter.
-              </p>
-            </div>
-            <div class="step-visual-wrapper">
-              <div class="step-image-container">
-                <img class="step-image" src="/public/step1.png" alt="Place stickers" />
+          <!-- Step 1 - Left -->
+          <div class="step-item step-left fade-in-up">
+            <div class="step-badge">01</div>
+            <div class="step-card">
+              <img src="./public/step1.png" alt="Place the Stickers and Table/Counter Stand" class="step-image rounded-2xl">
+              <div class="step-content">
+                <h3>Place the Stickers and Table/Counter Stand</h3>
+                <p>Cover every guest touchpoint—receipts, to-go bags, tables, drive-thru windows—so scanning the invite becomes the obvious next step.</p>
               </div>
             </div>
-            <div class="step-number-indicator" data-step-num="1">1</div>
           </div>
 
-          <!-- Step 2 -->
-          <div class="step-item reverse fade-in-up" data-step="2">
-            <div class="step-visual-wrapper">
-              <div class="step-image-container">
-                <img class="step-image" src="/public/step2.jpeg" alt="Customers scan" />
+          <!-- Timeline Dot 1 -->
+          <div class="timeline-dot"></div>
+
+          <!-- Step 2 - Right -->
+          <div class="step-item step-right fade-in-up" style="animation-delay: 0.1s">
+            <div class="step-badge">02</div>
+            <div class="step-card">
+              <img src="./public/step2.jpeg" alt="Customers Scan & Choose an Emoji" class="step-image rounded-2xl ">
+              <div class="step-content">
+                <h3>Customers Scan & Choose an Emoji</h3>
+                <p>Works on any phone—no app, no login. The emoji router makes it feel fun while steering every mood to the right destination.</p>
               </div>
             </div>
-            <div class="step-content-wrapper">
-              <span class="step-badge">Step 2</span>
-              <h2 class="step-heading">
-                Customers Scan & Choose an Emoji
-              </h2>
-              <p class="step-description">
-                Works on any phone, no app required
-              </p>
-              <div class="step-features-list">
-                <p>😊 Happy → Sent to Google for 5-star review</p>
-                <p>😐 Neutral → Private feedback form</p>
-                <p>😞 Unhappy → Private feedback form</p>
-              </div>
-            </div>
-            <div class="step-number-indicator" data-step-num="2">2</div>
           </div>
 
-          <!-- Step 3 -->
-          <div class="step-item reverse fade-in-up" data-step="3">
-            <div class="step-visual-wrapper">
-              <div class="step-image-container">
-                <img class="step-image" src="/public/step3.jpeg" alt="Happy review" />
+          <!-- Timeline Dot 2 -->
+          <div class="timeline-dot"></div>
+
+          <!-- Step 3 - Left -->
+          <div class="step-item step-left fade-in-up" style="animation-delay: 0.2s">
+            <div class="step-badge">03</div>
+            <div class="step-card">
+              <img src="./public/step3.jpeg" alt="Happy Guests Post in Under 15 Seconds" class="step-image rounded-2xl">
+              <div class="step-content">
+                <h3>Happy Guests Post in Under 15 Seconds</h3>
+                <p>The scan launches your branded review page with pre-filled prompts so guests drop five-star feedback before they leave the counter.</p>
               </div>
             </div>
-            <div class="step-content-wrapper">
-              <span class="step-badge">Step 3</span>
-              <h2 class="step-heading">
-                If the customer presses the happy face, it will take them to the
-                review page.
-              </h2>
-              <div class="step-features-list mt-6">
-                <p>😊 Happy → Sent to Google for 5-star review</p>
-              </div>
-            </div>
-            <div class="step-number-indicator" data-step-num="3">3</div>
           </div>
 
-          <!-- Step 4 -->
-          <div class="step-item reverse fade-in-up" data-step="4">
-            <div class="step-visual-wrapper">
-              <div class="step-image-container">
-                <img class="step-image" src="/public/step4.jpeg" alt="Private feedback" />
+          <!-- Timeline Dot 3 -->
+          <div class="timeline-dot"></div>
+
+          <!-- Step 4 - Right -->
+          <div class="step-item step-right fade-in-up" style="animation-delay: 0.3s">
+            <div class="step-badge">04</div>
+            <div class="step-card">
+              <img src="./public/step4.jpeg" alt="Neutral & Unhappy Scans Stay Private" class="step-image rounded-2xl">
+              <div class="step-content">
+                <h3>Neutral & Unhappy Scans Stay Private</h3>
+                <p>The emoji router diverts complaints into a secure inbox so your public rating never takes the hit.</p>
               </div>
             </div>
-            <div class="step-content-wrapper">
-              <span class="step-badge">Step 4</span>
-              <h2 class="step-heading">
-                If the customer presses neutral or sad face, it will take them to a
-                private submission page. For your eyes only.
-              </h2>
-              <div class="step-features-list mt-6">
-                <p>😐 Neutral → Private feedback form</p>
-                <p>😞 Unhappy → Private feedback form</p>
-              </div>
-            </div>
-            <div class="step-number-indicator" data-step-num="4">4</div>
           </div>
 
-          <!-- Step 5 -->
-          <div class="step-item fade-in-up" data-step="5">
-            <div class="step-content-wrapper">
-              <span class="step-badge">Step 5</span>
-              <h2 class="step-heading">
-                (Pro & Ultimate) Incentivize Guests with a Reward
-              </h2>
-              <p class="step-description">
-                Incentivize customers to leave a review with a coupon
-                with an expiration date that'll bring them in again.
-              </p>
-            </div>
-            <div class="step-visual-wrapper">
-              <div class="step-image-container with-padding">
-                <img class="step-image" src="/public/step5.jpeg" alt="Reward system" />
+          <!-- Timeline Dot 4 -->
+          <div class="timeline-dot"></div>
+
+          <!-- Step 5 - Left -->
+          <div class="step-item step-left fade-in-up" style="animation-delay: 0.4s">
+            <div class="step-badge">05</div>
+            <div class="step-card">
+              <img src="./public/step5.jpeg" alt="Incentivize Guests with a Reward" class="step-image rounded-2xl">
+              <div class="step-content">
+                <h3>(Pro & Ultimate) Incentivize Guests with a Reward</h3>
+                <p>Offer a time-sensitive coupon the moment they finish the review so they remember who treated them well.</p>
               </div>
             </div>
-            <div class="step-number-indicator" data-step-num="5">5</div>
           </div>
 
-          <!-- Step 6 -->
-          <div class="step-item reverse fade-in-up" data-step="6">
-            <div class="step-visual-wrapper">
-              <div class="step-image-container with-padding">
-                <img class="step-image" src="/public/step6.jpeg" alt="Dashboard tracking" />
+          <!-- Timeline Dot 5 -->
+          <div class="timeline-dot"></div>
+
+          <!-- Step 6 - Right -->
+          <div class="step-item step-right fade-in-up" style="animation-delay: 0.5s">
+            <div class="step-badge">06</div>
+            <div class="step-card">
+              <img src="./public/step6.jpeg" alt="Track Everything Inside One Dashboard" class="step-image rounded-2xl">
+              <div class="step-content">
+                <h3>Track Everything Inside One Dashboard</h3>
+                <p>Watch sticker scans, five-star reviews, private notes, and coupon redemptions roll in without digging through spreadsheets.</p>
               </div>
             </div>
-            <div class="step-content-wrapper">
-              <span class="step-badge">Step 6</span>
-              <h2 class="step-heading">
-                Track Everything in Your Dashboard
-              </h2>
-              <p class="step-description">
-                📊 See your results in real-time. View reviews, scan data, and
-                private customer feedback — all in one clean, simple dashboard.
-              </p>
-              <div class="step-features-list mt-6">
-                <p>✔️ Track how many stickers were scanned</p>
-                <p>✔️ See which customers left 5-star reviews</p>
-                <p>✔️ Read private feedback instantly</p>
-                <p>✔️ Download reports anytime</p>
-              </div>
-              <p class="step-description step-description-small mt-6">
-                🧠 No guessing. Just data that helps you improve faster, sell more,
-                and make smarter decisions.
-              </p>
-            </div>
-            <div class="step-number-indicator" data-step-num="6">6</div>
           </div>
+
+          <!-- Timeline Dot 6 (Final) -->
+          <div class="timeline-dot final"></div>
         </div>
       </div>
+    </section>
 
-      <div class="mt-20">
-        
-       <div class="">
-        <div class="text-center">
-          <h1 class="text-2xl font-bold pb-8">Try it out for yourself</h1>
-          <p class="text-center text-grey text-base md:text-[20px] font-medium">
-            See exactly what your customers experience when they scan a
-            Instareviewus sign.
-          </p>
+    <!-- Why Reviews Matter Section -->
+    <section class="section-shell section-light">
+      <div class="content-wrapper">
+        <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+          <div class="section-intro mb-12">
+            <h2>⭐ Why Reviews Matter</h2>
+            <p>Customers compare ratings before they ever call or walk in. Dropping below 4.5★ means they pick someone else.</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p class="text-2xl font-bold text-blue-600 mb-4">Businesses with 4.5+ ratings get 28% more customers</p>
+              <p class="text-gray-700 text-lg mb-6 italic">(Source: BrightLocal Consumer Review Survey)</p>
+              <p class="text-gray-700 text-lg leading-relaxed">If your rating is under 4.5 stars, customers are choosing competitors. InstaReviewUs helps you generate consistent new reviews and protect your reputation from negative feedback.</p>
+            </div>
+            <div class="bg-gradient-to-br from-blue-100 to-blue-50 p-8 rounded-2xl">
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <span class="text-3xl text-green-600 font-bold mr-4">✔</span>
+                  <p class="text-gray-900 font-semibold">Higher ratings attract more customers</p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-3xl text-green-600 font-bold mr-4">✔</span>
+                  <p class="text-gray-900 font-semibold">More reviews build trust and credibility</p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-3xl text-green-600 font-bold mr-4">✔</span>
+                  <p class="text-gray-900 font-semibold">Negative reviews hurt revenue and reputation</p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-3xl text-green-600 font-bold mr-4">✔</span>
+                  <p class="text-gray-900 font-semibold">Private feedback helps you improve</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex justify-center items-center mt-8">
-          <img
-            src="./public/exampleforinstareviewus.jpeg"
-            class="rounded-full w-[500px] h-[500px]"
-            alt="this is a Sample QR code Image"
-          />
-        </div>
-        <div class="flex flex-col space-y-3 justify-center items-center mt-8">
-          <a
-            href="https://instareviewus.com/review/DA331A92-AB91-4C78-B667-3643F61EC8F8"
-            target="_blank"
-          >
-            <button class="ml-4 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
-              👉 Try the live demo
-            </button>
-          </a>
-          <p>
-              This is a demo example. Your customers will be sent to your Google
-              review page.
-            </p>
-        </div>
-      </div>
-
       </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 section-light">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold mb-4">
-            Why Restaurants Love It
-          </h2>
-          <p class="text-xl text-gray-600">
-            We provide everything you need to protect your business reputation
-          </p>
+    <section id="features" class="section-shell section-light">
+      <div class="content-wrapper">
+        <div class="section-intro">
+          <h2>Everything You Need To Generate More 5-Star Reviews</h2>
+          <p>Every plan includes the hardware, software, and automation to capture feedback, protect your rating, and showcase happy customers.</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="feature-card fade-in-up" style="animation-delay: 0s">
-            <div class="mb-4 text-2xl">✅</div>
-            <h3 class="text-lg font-bold mb-2">No Awkward Asks</h3>
-            <p class="text-gray-600">Guests do it themselves in seconds</p>
+        <div class="features-grid">
+          <!-- Feature 1 -->
+          <div class="feature-card feature-card-hover fade-in-up" style="animation-delay: 0s">
+            <div class="feature-icon">🏷️</div>
+            <h3>1,000 Smart Review Stickers</h3>
+            <ul class="feature-list">
+              <li>✔ Place them on tables, receipts, or checkout counters.</li>
+              <li>✔ Customers scan instantly with their phone.</li>
+              <li>✔ No apps required.</li>
+            </ul>
           </div>
 
-          <div class="feature-card fade-in-up" style="animation-delay: 0.1s">
-            <div class="mb-4 text-2xl">⭐</div>
-            <h3 class="text-lg font-bold mb-2">
-              Protect Your Hard-Earned Star Rating
-            </h3>
-            <p class="text-gray-600">
-              Directs happy guests to public reviews and unhappy ones to private
-              feedback.
-            </p>
+          <!-- Feature 2 -->
+          <div class="feature-card feature-card-hover fade-in-up" style="animation-delay: 0.1s">
+            <div class="feature-icon">⭐</div>
+            <h3>Smart Review Filtering System</h3>
+            <ul class="feature-list">
+              <li>✔ Happy customers leave public reviews.</li>
+              <li>✔ Unhappy customers leave private feedback.</li>
+              <li>✔ Protect your reputation.</li>
+            </ul>
           </div>
 
-          <div class="feature-card fade-in-up" style="animation-delay: 0.2s">
-            <div class="mb-4 text-2xl">🏷️</div>
-            <h3 class="text-lg font-bold mb-2">Scan-to-Review Stickers</h3>
-            <p class="text-gray-600">
-              1000 Large, eye-catching QR stickers that customers can scan in
-              seconds.
-            </p>
+          <!-- Feature 3 -->
+          <div class="feature-card feature-card-hover fade-in-up" style="animation-delay: 0.2s">
+            <div class="feature-icon">🎁</div>
+            <h3>Customer Incentives</h3>
+            <ul class="feature-list">
+              <li>✔ Offer optional rewards to boost scans.</li>
+              <li>✔ Keep customers coming back.</li>
+              <li>✔ Increase scan rates dramatically.</li>
+            </ul>
           </div>
 
-          <div class="feature-card fade-in-up" style="animation-delay: 0.3s">
-            <div class="mb-4 text-2xl">📱</div>
-            <h3 class="text-lg font-bold mb-2">Tap-to-Review Stands</h3>
-            <p class="text-gray-600">
-              Front-counter NFC stands that let guests leave reviews just by
-              tapping their phone.
-            </p>
-          </div>
-
-          <div class="feature-card fade-in-up" style="animation-delay: 0.4s">
-            <div class="mb-4 text-2xl">🎁</div>
-            <h3 class="text-lg font-bold mb-2">Automated Coupons & Rewards</h3>
-            <p class="text-gray-600">
-              Send customers thank-you coupons or discounts automatically after
-              submitting feedback.
-            </p>
-          </div>
-
-          <div class="feature-card fade-in-up" style="animation-delay: 0.5s">
-            <div class="mb-4 text-2xl">📊</div>
-            <h3 class="text-lg font-bold mb-2">Analytics Dashboard</h3>
-            <p class="text-gray-600">
-              Track every scan, tap, and review — see what's working and where
-              to improve.
-            </p>
+          <!-- Feature 4 -->
+          <div class="feature-card feature-card-hover fade-in-up" style="animation-delay: 0.3s">
+            <div class="feature-icon">📊</div>
+            <h3>Analytics Dashboard</h3>
+            <ul class="feature-list">
+              <li>✔ Track review growth in real-time.</li>
+              <li>✔ Monitor customer sentiment.</li>
+              <li>✔ Location performance metrics.</li>
+            </ul>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="text-center mt-16">
-          <div
-            class="inline-block bg-blue-100 text-blue-700 px-6 py-3 rounded-lg font-semibold"
-          >
-            ✅ Fast Setup — Works in 2 minutes, no staff training needed.
+    <!-- QR Code Comparison Section -->
+    <section class="section-shell section-white">
+      <div class="content-wrapper">
+        <div class="section-intro">
+          <h2>Why Not Just Use a QR Code?</h2>
+          <p>Most QR codes push every customer straight to Google — even the unhappy ones. InstaReviewUs routes each guest to the right destination so you get more praise and less public complaints.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Simple QR Code -->
+          <div class="bg-red-50 border-2 border-red-300 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-red-600 mb-6">Simple QR Code</h3>
+            <div class="space-y-3">
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-red-600 mr-3">❌</span> Sends everyone to leave a public review
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-red-600 mr-3">❌</span> Negative customers leave bad reviews publicly
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-red-600 mr-3">❌</span> No feedback capture
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-red-600 mr-3">❌</span> No analytics
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-red-600 mr-3">❌</span> No incentives
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-red-600 mr-3">❌</span> No review growth system
+              </p>
+            </div>
           </div>
+
+          <!-- InstaReviewUs -->
+          <div class="bg-green-50 border-2 border-green-300 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-green-600 mb-6">InstaReviewUs</h3>
+            <div class="space-y-3">
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-green-600 mr-3">✔</span> Sends happy customers to Google reviews
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-green-600 mr-3">✔</span> Sends unhappy customers to private feedback
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-green-600 mr-3">✔</span> Protects your rating
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-green-600 mr-3">✔</span> Tracks scans and review growth
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-green-600 mr-3">✔</span> Optional incentives to boost ratings
+              </p>
+              <p class="flex items-center text-gray-900 font-semibold">
+                <span class="text-2xl text-green-600 mr-3">✔</span> Built specifically to generate more 5-star reviews
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Auto-Scrolling Marquee -->
+    <section class="section-shell section-white">
+      <div class="content-wrapper">
+        <div class="section-intro">
+          <h2>What Our Customers Say</h2>
+          <p>Real results from local restaurants, cafes, and retail shops using InstaReviewUs.</p>
+        </div>
+        
+        <div class="testimonials-marquee-wrapper">
+          <div class="testimonials-marquee" id="testimonialsMarquee">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "We doubled our 5-star reviews in under a month. The private feedback saved us from multiple bad ratings."
+              </p>
+              <p class="font-bold text-gray-900">Samantha</p>
+              <p class="text-gray-600 text-sm">Susu's Dream Cakes</p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "Customers love how simple it is, they scan, leave feedback, and we get more reviews every week."
+              </p>
+              <p class="font-bold text-gray-900">Ahmed</p>
+              <p class="text-gray-600 text-sm">Olives and Figs</p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "Set up was quick, the dashboard is easy to use, and our online reputation has never been better."
+              </p>
+              <p class="font-bold text-gray-900">David</p>
+              <p class="text-gray-600 text-sm">NYC Bagels and Coffee</p>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "Our Google reviews jumped from 12 to 47 in just 6 weeks. This system is a game-changer!"
+              </p>
+              <p class="font-bold text-gray-900">Maria</p>
+              <p class="text-gray-600 text-sm">Pizza Express</p>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "The emoji router is brilliant. Negative feedback is caught before it hits Google. Exactly what we needed."
+              </p>
+              <p class="font-bold text-gray-900">James</p>
+              <p class="text-gray-600 text-sm">The Coffee Hub</p>
+            </div>
+
+            <!-- Testimonial 6 -->
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "Finally, a solution that actually works. Our rating went from 4.2 to 4.8 stars in 2 months!"
+              </p>
+              <p class="font-bold text-gray-900">Lisa</p>
+              <p class="text-gray-600 text-sm">Smoothie King Franchise</p>
+            </div>
+
+            <!-- Testimonial 7 -->
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "Easy to use, zero technical setup required. Our whole team got trained in 15 minutes."
+              </p>
+              <p class="font-bold text-gray-900">Robert</p>
+              <p class="text-gray-600 text-sm">Burger Barn</p>
+            </div>
+
+            <!-- Testimonial 8 -->
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "We recovered three bad reviews before they went public. The ROI speaks for itself!"
+              </p>
+              <p class="font-bold text-gray-900">Michelle</p>
+              <p class="text-gray-600 text-sm">Taco Tuesday</p>
+            </div>
+
+            <!-- Duplicate set for seamless loop -->
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "We doubled our 5-star reviews in under a month. The private feedback saved us from multiple bad ratings."
+              </p>
+              <p class="font-bold text-gray-900">Samantha</p>
+              <p class="text-gray-600 text-sm">Susu's Dream Cakes</p>
+            </div>
+
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "Customers love how simple it is, they scan, leave feedback, and we get more reviews every week."
+              </p>
+              <p class="font-bold text-gray-900">Ahmed</p>
+              <p class="text-gray-600 text-sm">Olives and Figs</p>
+            </div>
+
+            <div class="testimonial-card marquee-item">
+              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                "Set up was quick, the dashboard is easy to use, and our online reputation has never been better."
+              </p>
+              <p class="font-bold text-gray-900">David</p>
+              <p class="text-gray-600 text-sm">NYC Bagels and Coffee</p>
+            </div>
+          </div>
+          
+          <!-- Gradient overlays for fade effect -->
+          <div class="marquee-fade-left"></div>
+          <div class="marquee-fade-right"></div>
         </div>
       </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-20 section-light">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-20">
-          <h2 class="text-4xl md:text-5xl font-bold mb-4">
-            Simple, Transparent Pricing
-          </h2>
-          <p class="text-xl text-gray-600">No contracts, cancel anytime.</p>
+    <section id="pricing" class="section-shell section-light">
+      <div class="content-wrapper">
+        <div class="section-intro mb-16">
+          <h2>Special Launch Pricing</h2>
+          <p>Today only — 50% OFF for the first 20 businesses that sign up.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8 mb-16">
@@ -631,12 +882,14 @@
                 >
             </ul>
 
-            <button class="pricing-btn btn-outline">Choose Starter</button>
+            <a href="#join-us">
+              <button class="pricing-btn btn-outline w-full">Choose Starter</button>
+            </a>
           </div>
 
           <!-- Pro Plan (Most Popular) -->
           <div
-            class="pricing-card popular fade-in-up"
+            class="pricing-card popular fade-in-up relative"
             style="animation-delay: 0.1s"
           >
             <div class="popular-badge">
@@ -690,7 +943,9 @@
               </li>
             </ul>
 
-            <button class="pricing-btn btn-primary">Choose Pro</button>
+            <a href="#join-us">
+              <button class="pricing-btn btn-primary w-full">Choose Pro</button>
+            </a>
           </div>
 
           <!-- Ultimate Plan -->
@@ -742,89 +997,26 @@
               </li>
             </ul>
 
-            <button class="pricing-btn btn-outline">Choose Ultimate</button>
+            <a href="#join-us">
+              <button class="pricing-btn btn-outline w-full">Choose Ultimate</button>
+            </a>
           </div>
         </div>
 
-        <!-- Sticker Info -->
-        <div
-          class="bg-white rounded-2xl p-8 md:p-12 fade-in-up border border-blue-200"
-        >
-          <p class="text-center text-gray-900 font-semibold mb-8 text-lg">
-            📌 Sticker Options Included With Your Plan
-          </p>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div>
-              <p class="font-bold text-gray-900 mb-3">
-                Starter Plan ($49.99/mo)
-              </p>
-              <p class="text-gray-700">
-                You'll receive our Standard Stickers. Happy customers are sent
-                to your Google page. Unhappy customers share private feedback
-                with you.
-              </p>
+        <!-- Pricing Info -->
+        <div class="bg-white rounded-2xl p-8 md:p-12 fade-in-up border border-blue-200">
+          <div class="space-y-6">
+            <div class="text-center">
+              <p class="text-2xl font-bold text-gray-900 mb-4">💰 Today Only Special! — 50% OFF</p>
+              <p class="text-gray-700 mb-4">For the first 20 businesses that sign up today only</p>
+              <div class="text-left max-w-md mx-auto mb-4 space-y-2 text-gray-700 font-medium">
+                <p>✔ 1,000 Smart Review Stickers</p>
+                <p>✔ Smart Review Filtering System</p>
+                <p>✔ Free Custom Sticker Design</p>
+              </div>
+              <p class="text-4xl font-bold text-gray-900 mb-2"><span class="line-through text-gray-400 text-3xl">$179</span> <span class="text-blue-600">$89</span></p>
+              <p class="text-gray-700 text-sm">Full dashboard access and review filtering starts at $49/month — most businesses recover this with just 1–2 additional customers. Cancel anytime! No contract!</p>
             </div>
-            <div>
-              <p class="font-bold text-gray-900 mb-3">
-                Pro & Ultimate Plans ($69.99+ /mo)
-              </p>
-              <p class="text-gray-700">
-                You'll receive our Incentivized Stickers. Incentivizes customers
-                to leave a review by offering a thank-you coupon that also
-                encourages repeat visits.
-              </p>
-            </div>
-          </div>
-          <p class="text-center text-gray-700 mt-8 text-sm">
-            👉 No need to choose. When you pick your plan, we'll automatically
-            send you the correct stickers.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-20 section-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold mb-4">
-            What Our Customers Say
-          </h2>
-          <p class="text-xl text-gray-600">Real results from real businesses</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="testimonial-card fade-in-up" style="animation-delay: 0s">
-            <p class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</p>
-            <p class="text-gray-700 leading-relaxed mb-6">
-              "We doubled our 5-star reviews in under a month. The private
-              feedback saved us from multiple bad ratings."
-            </p>
-            <p class="font-bold text-gray-900">Samantha</p>
-            <p class="text-gray-600 text-sm">Susu's Dream Cakes</p>
-          </div>
-          <div
-            class="testimonial-card fade-in-up"
-            style="animation-delay: 0.1s"
-          >
-            <p class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</p>
-            <p class="text-gray-700 leading-relaxed mb-6">
-              "Customers love how simple it is, they scan, leave feedback, and
-              we get more reviews every week."
-            </p>
-            <p class="font-bold text-gray-900">Ahmed</p>
-            <p class="text-gray-600 text-sm">Olives and Figs</p>
-          </div>
-          <div
-            class="testimonial-card fade-in-up"
-            style="animation-delay: 0.2s"
-          >
-            <p class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</p>
-            <p class="text-gray-700 leading-relaxed mb-6">
-              "Set up was quick, the dashboard is easy to use, and our online
-              reputation has never been better."
-            </p>
-            <p class="font-bold text-gray-900">David</p>
-            <p class="text-gray-600 text-sm">NYC Bagels and Coffee</p>
           </div>
         </div>
       </div>
@@ -853,18 +1045,25 @@
         <div class="particle particle-8"></div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="content-wrapper content-wrapper--wide relative z-10">
         <!-- Header Text - Top Center -->
         <div class="text-center mb-16 fade-in-up">
-          <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-title">
-            Join Us!
+          <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-6 animate-title">
+            Set Up Your Review Growth System
           </h2>
           <h3 class="text-2xl md:text-3xl font-semibold text-gray-700 mb-4 animate-subtitle">
-            Want to join us? Smart idea!
+            Tell us about your business and we'll set up your review system for you.
           </h3>
           <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto animate-text">
-            Please fill in the following form and we will get in touch with you soon.
+            A member of our team will:
           </p>
+          <div class="text-gray-700 mt-4 space-y-2">
+            <p class="font-semibold">✔ Set up your review system</p>
+            <p class="font-semibold">✔ Customize your stickers for your business</p>
+            <p class="font-semibold">✔ Prepare everything so you can launch quickly</p>
+            <p class="font-semibold">✔ Reach out briefly to finalize your setup (no sales pitch)</p>
+          </div>
+          <p class="mt-4 text-gray-600 italic">We'll only contact you to complete your setup. No spam. Scouts Honor. We hate it more than you do</p>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -903,7 +1102,18 @@
           <div class="join-us-right fade-in-right">
             <form id="feedbackForm" class="join-us-form">
               <div class="form-group-join">
-                <label for="name">Name</label>
+                <label for="businessName">Business Name</label>
+                <input
+                  type="text"
+                  id="businessName"
+                  name="businessName"
+                  placeholder="Enter your business name"
+                  required
+                />
+              </div>
+
+              <div class="form-group-join">
+                <label for="name">Your Name</label>
                 <input
                   type="text"
                   id="name"
@@ -914,29 +1124,7 @@
               </div>
               
               <div class="form-group-join">
-                <label for="businessName">Business Name</label>
-                <input
-                  type="text"
-                  id="businessName"
-                  name="businessName"
-                  placeholder="Enter your business name"
-                  required
-                />
-              </div>
-              
-              <div class="form-group-join">
-                <label for="phone">Phone</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="Enter your phone"
-                  required
-                />
-              </div>
-              
-              <div class="form-group-join">
-                <label for="email">Email</label>
+                <label for="email">Email Address</label>
                 <input
                   type="email"
                   id="email"
@@ -947,19 +1135,30 @@
               </div>
               
               <div class="form-group-join">
-                <label for="message">Comments</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Tell us more about your business"
-                  rows="5"
+                <label for="phone">Best number to reach you for setup (no spam)</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Enter your phone"
                   required
-                ></textarea>
+                />
               </div>
               
-              <button type="submit" class="submit-join-btn">
-                SUBMIT
+              <button type="submit" class="submit-join-btn w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-bold py-3 px-8 rounded-xl hover:shadow-lg hover:scale-105 transition duration-300">
+                👉 Start Getting More Google Reviews
               </button>
+
+              <div class="mt-4 space-y-2 text-center text-sm text-gray-600">
+                <p class="flex items-center justify-center"><span class="text-lg mr-2">✔</span> No contracts</p>
+                <p class="flex items-center justify-center"><span class="text-lg mr-2">✔</span> Cancel anytime</p>
+                <p class="flex items-center justify-center"><span class="text-lg mr-2">✔</span> Setup handled for you</p>
+                <p class="flex items-center justify-center"><span class="text-lg mr-2">✔</span> Used by real local businesses</p>
+              </div>
+
+              <div class="mt-6 bg-yellow-50 border border-yellow-300 rounded-lg p-4 text-center">
+                <p class="text-sm font-semibold text-orange-700">⚠️ We're currently onboarding a limited number of businesses this week.</p>
+              </div>
             </form>
             
             <div id="feedbackSuccess" class="join-us-success" style="display: none;">
@@ -973,62 +1172,54 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-20 section-light">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p class="text-xl text-gray-600">
-            Have a question before getting started?
-          </p>
+    <section id="faq" class="section-shell section-light">
+      <div class="content-wrapper content-wrapper--narrow">
+        <div class="section-intro">
+          <h2>Frequently Asked Questions</h2>
+          <p>Have a question before getting started?</p>
         </div>
         <div class="space-y-4">
           <div class="fade-in-up" style="animation-delay: 0s">
             <button class="accordion-btn" onclick="toggleAccordion(0)">
-              <span>Is incentivizing reviews allowed?</span>
+              <span>Is there a monthly fee?</span>
               <span class="accordion-icon">▼</span>
             </button>
             <div class="accordion-content" id="faq-0">
               <p class="text-gray-700">
-                Yes. We never pay for 5-stars, incentives are triggered only
-                after feedback is submitted. This complies with Google's
-                guidelines.
+                Yes. Your one-time starter kit includes your stickers and setup. Full dashboard access and review filtering starts at $49/month — most businesses recover this with just 1–2 additional customers. You can cancel anytime.
               </p>
             </div>
           </div>
           <div class="fade-in-up" style="animation-delay: 0.1s">
             <button class="accordion-btn" onclick="toggleAccordion(1)">
-              <span>Do I need any technical setup?</span>
+              <span>Will customers actually scan the stickers?</span>
               <span class="accordion-icon">▼</span>
             </button>
             <div class="accordion-content" id="faq-1">
               <p class="text-gray-700">
-                No. Your account, stickers, and stands arrive preconfigured and
-                ready to use. Just place them where customers can see them.
+                Restaurants typically see 10–25% scan rates. Once customers experience how easy it is to leave feedback, many come back to scan again.
               </p>
             </div>
           </div>
           <div class="fade-in-up" style="animation-delay: 0.2s">
             <button class="accordion-btn" onclick="toggleAccordion(2)">
-              <span>Can I track performance?</span>
+              <span>Is setup complicated?</span>
               <span class="accordion-icon">▼</span>
             </button>
             <div class="accordion-content" id="faq-2">
               <p class="text-gray-700">
-                Yes! Your dashboard shows how many scans, taps, and reviews
-                you've received, and which locations perform best.
+                No. Setup takes under two minutes. Everything is preconfigured and ready to use. Just place the stickers and start collecting reviews.
               </p>
             </div>
           </div>
           <div class="fade-in-up" style="animation-delay: 0.3s">
             <button class="accordion-btn" onclick="toggleAccordion(3)">
-              <span>How long does setup take?</span>
+              <span>Do I need technical skills?</span>
               <span class="accordion-icon">▼</span>
             </button>
             <div class="accordion-content" id="faq-3">
               <p class="text-gray-700">
-                Most businesses go live the same day their stickers arrive.
+                No. Everything is preconfigured. Just place the stickers and start collecting reviews. No technical knowledge required.
               </p>
             </div>
           </div>
@@ -1037,37 +1228,52 @@
     </section>
 
     <!-- Final CTA Section -->
-    <section class="py-20 gradient-section text-white">
-      <div
-        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up"
-      >
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
-          Ready to Skyrocket Your 5-Star Reviews?
-        </h2>
-        <p class="text-xl mb-8 text-blue-100">
-          Start your journey today. See real results this week.
-        </p>
-        <p class="text-lg mb-12 text-blue-100">
-          Cancel next month, in 3 or in 10! Literally anytime!
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            class="bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition hover:scale-105 transform duration-300"
-          >
-            Get More Reviews Now
-          </button>
-          <button
-            class="border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:bg-opacity-10 transition"
-          >
-            Book a Demo
-          </button>
+    <section class="section-shell section-soft">
+      <div class="content-wrapper">
+        <div class="text-center fade-in-up">
+          <h2 class="text-2xl md:text-5xl font-bold text-gray-900 mb-6">
+            Ready to Transform Your Online Reputation?
+          </h2>
+          <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-4">
+            Join 5,000+ local businesses already generating consistent 5-star reviews.
+          </p>
+          <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+            Don't let your competitors win with better reviews. Start your review growth system today.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <a href="#join-us">
+              <button class="bg-blue-600 text-white font-bold py-4 px-10 rounded-lg hover:bg-blue-700 transition hover:shadow-lg transform duration-300 text-lg">
+                👉 Start Getting More Google Reviews
+              </button>
+            </a>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+            <div class="bg-white rounded-xl p-8 shadow-md border border-blue-100">
+              <p class="text-3xl font-bold text-blue-600 mb-2">50%</p>
+              <p class="text-gray-700 font-semibold">OFF Launch Special</p>
+            </div>
+            <div class="bg-white rounded-xl p-8 shadow-md border border-blue-100">
+              <p class="text-3xl font-bold text-blue-600 mb-2">48hrs</p>
+              <p class="text-gray-700 font-semibold">Go-live Window</p>
+            </div>
+            <div class="bg-white rounded-xl p-8 shadow-md border border-blue-100">
+              <p class="text-3xl font-bold text-blue-600 mb-2">No Setup</p>
+              <p class="text-gray-700 font-semibold">We Handle Everything</p>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mt-12 text-sm">
+            $49/month dashboard access • Cancel anytime • No contracts
+          </p>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="content-wrapper content-wrapper--wide">
         <div class="grid md:grid-cols-4 gap-12 mb-12">
           <div>
             <div class="flex items-center gap-2 mb-4">
@@ -1149,6 +1355,6 @@
 
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
